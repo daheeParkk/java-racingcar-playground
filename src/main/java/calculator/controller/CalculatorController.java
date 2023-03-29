@@ -6,6 +6,7 @@ import java.util.List;
 public class CalculatorController {
 
     private static final int FIRST_SEPARATOR_INDEX = 1;
+    private static final int FIRST_CUSTOM_SEPARATOR_INDEX = 6;
     private static final int NEXT_INDEX = 1;
     private static final int PREVIOUS_INDEX = 1;
     private static final int NEXT_NUMBER_INDEX = 2;
@@ -21,6 +22,11 @@ public class CalculatorController {
         if (numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(",") || numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(";")) {
             result = sumNumbers(FIRST_SEPARATOR_INDEX);
         }
+
+        if (numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals("/")) {
+            result = sumNumbers(FIRST_CUSTOM_SEPARATOR_INDEX);
+        }
+
         return result;
     }
 
