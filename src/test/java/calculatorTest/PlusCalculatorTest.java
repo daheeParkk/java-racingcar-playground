@@ -25,7 +25,7 @@ public class PlusCalculatorTest {
 
     @DisplayName("커스텀한 구분자를 가질 경우")
     @ParameterizedTest
-    @CsvSource(value = {"//;\n1;2;3=6","//+\n5+3=8"}, delimiter = '=')
+    @CsvSource(value = {"//;\\n1;2;3=6","//+\\n5+3=8"}, delimiter = '=')
     public void calculateCustomDelimiterTest(String addition, int result) {
         Assertions.assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
     }
