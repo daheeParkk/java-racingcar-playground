@@ -1,5 +1,6 @@
 package calculatorTest;
 
+import calculator.controller.CalculatorController;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -8,10 +9,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class PlusCalculatorTest {
 
+    private static CalculatorController calculator;
+
     @BeforeAll
     public static void generateCalculatorController() {
-        final CalculatorController calculator = new CalculatorController();
-        int result;
+        calculator = new CalculatorController();
     }
 
     @DisplayName("콤마 또는 콜론을 구분자로 가질 경우")
