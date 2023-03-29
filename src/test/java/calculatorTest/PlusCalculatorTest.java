@@ -6,6 +6,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class PlusCalculatorTest {
 
@@ -20,13 +23,20 @@ public class PlusCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1,2=3","1,2,3=6", "1,2,3,4=10"}, delimiter = '=')
     public void calculateCommaAndColonDelimiterTest(String addition, int result) {
-        Assertions.assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
+        assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
     }
 
     @DisplayName("커스텀한 구분자를 가질 경우")
     @ParameterizedTest
     @CsvSource(value = {"//;\\n1;2;3=6","//+\\n5+3=8"}, delimiter = '=')
     public void calculateCustomDelimiterTest(String addition, int result) {
-        Assertions.assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
+        assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
+    }
+
+    @DisplayName("숫자 하나를 입력할 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2", "3"})
+    public void inputOneNumberTest(String addition) {
+        assertThat(calculator.splitAndSum(addition)).isEqualTo(Integer.parseInt(addition));
     }
 }
