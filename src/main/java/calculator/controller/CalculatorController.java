@@ -13,11 +13,15 @@ public class CalculatorController {
 
     private static List<String> numberAndSeparator;
     private static int sumResult;
+    private static int result;
 
     public int splitAndSum(String expression) {
 
         splitExpression(expression);
-        int result = 0;
+
+        if (expression.length() == 1) {
+            return Integer.parseInt(expression);
+        }
 
         if (isCommaOrColonSeparator()) {
             result = sumNumbers(FIRST_SEPARATOR_INDEX);
