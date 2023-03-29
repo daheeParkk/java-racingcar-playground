@@ -14,32 +14,48 @@ public class CalculatorController {
     private static List<String> numberAndSeparator;
     private static int sumResult;
     private static int result;
+    private static int firstSeparatorIndex;
 
     public int splitAndSum(String expression) {
 
+        if (isOneNumber(expression)) {
+            return result;
+        }
         splitExpression(expression);
-
-        if (expression.length() == 1) {
-            return Integer.parseInt(expression);
-        }
-
-        if (isCommaOrColonSeparator()) {
-            result = sumNumbers(FIRST_SEPARATOR_INDEX);
-        }
-
-        if (isCustomSeparator()) {
-            result = sumNumbers(FIRST_CUSTOM_SEPARATOR_INDEX);
-        }
+        sumBySeparator();
 
         return result;
     }
 
+    private boolean isOneNumber(String expression) {
+
+        if (expression.length() == 1) {
+            result = Integer.parseInt(expression);
+            return true;
+        }
+        return false;
+    }
+
+    private void sumBySeparator() {
+        if (isCommaOrColonSeparator() || isCustomSeparator()) {
+            result = sumNumbers(firstSeparatorIndex);
+        }
+    }
+
     private boolean isCustomSeparator() {
-        return numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals("/");
+        if (numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals("/")) {
+            firstSeparatorIndex = FIRST_CUSTOM_SEPARATOR_INDEX;
+            return true;
+        }
+        return false;
     }
 
     private boolean isCommaOrColonSeparator() {
-        return numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(",") || numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(";");
+        if (numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(",") || numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(";")) {
+            firstSeparatorIndex = FIRST_SEPARATOR_INDEX;
+            return true;
+        }
+        return false;
     }
 
     private int sumNumbers(int index) {
