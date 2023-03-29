@@ -19,15 +19,23 @@ public class CalculatorController {
         splitExpression(expression);
         int result = 0;
 
-        if (numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(",") || numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(";")) {
+        if (isCommaOrColonSeparator()) {
             result = sumNumbers(FIRST_SEPARATOR_INDEX);
         }
 
-        if (numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals("/")) {
+        if (isCustomSeparator()) {
             result = sumNumbers(FIRST_CUSTOM_SEPARATOR_INDEX);
         }
 
         return result;
+    }
+
+    private boolean isCustomSeparator() {
+        return numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals("/");
+    }
+
+    private boolean isCommaOrColonSeparator() {
+        return numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(",") || numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(";");
     }
 
     private int sumNumbers(int index) {
