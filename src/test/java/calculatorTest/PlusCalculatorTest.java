@@ -19,8 +19,14 @@ public class PlusCalculatorTest {
     @DisplayName("콤마 또는 콜론을 구분자로 가질 경우")
     @ParameterizedTest
     @CsvSource(value = {"1,2=3","1,2,3=6", "1,2,3,4=10"}, delimiter = '=')
-    public void separateCommaAndColonTest(String addition, int result) {
-        int testResult = calculator.splitAndSum(addition);
-        Assertions.assertThat(testResult).isEqualTo(result);
+    public void calculateCommaAndColonDelimiterTest(String addition, int result) {
+        Assertions.assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
+    }
+
+    @DisplayName("커스텀한 구분자를 가질 경우")
+    @ParameterizedTest
+    @CsvSource(value = {"//;\n1;2;3=6","//+\n5+3=8"}, delimiter = '=')
+    public void calculateCustomDelimiterTest(String addition, int result) {
+        Assertions.assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
     }
 }
