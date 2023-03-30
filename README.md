@@ -31,3 +31,22 @@ ex) git checkout -b apply-feedback
 > - 숫자 하나를 전달하는 경우 -> 해당 숫자 반환
 > - 빈 문자열을 전달하는 경우 -> 0 반환
 > - 숫자 이외의 값 또는 음수를 전달하는 경우 -> 예외발생
+---
+# 자동차 경주 게임 구현 목록
+> - __domain__
+> - [ ] Car 
+> - [ ] Cars 
+> ---
+> - __controller__
+> - [ ] GameController
+> ---
+> - __service__
+> - [ ] RacingService
+> - [ ] CarService
+> - ---
+> - __view__
+> - [ ] InputView
+> - [ ] ResultView
+> - ---
+> - ___예외처리___
+> - [ ] 자동차 이름이 5자를 초과할 경우
