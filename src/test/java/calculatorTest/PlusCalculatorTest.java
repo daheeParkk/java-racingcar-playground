@@ -7,11 +7,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static calculator.controller.CalculatorController.EMPTY_STRING_VALUE;
 import static org.assertj.core.api.Assertions.*;
 
 public class PlusCalculatorTest {
-
-    private static final int EMPTY_STRING_VALUE = 0;
 
     private static CalculatorController calculator;
 

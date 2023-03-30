@@ -10,6 +10,7 @@ public class CalculatorController {
     private static final int NEXT_INDEX = 1;
     private static final int PREVIOUS_INDEX = 1;
     private static final int NEXT_NUMBER_INDEX = 2;
+    public static final int EMPTY_STRING_VALUE = 0;
 
     private static List<String> numberAndSeparator;
     private static int sumResult;
@@ -18,7 +19,7 @@ public class CalculatorController {
 
     public int splitAndSum(String expression) throws Exception {
 
-        if (isEmptyString(expression) || isOneNumber(expression)) {
+        if (isEmpty(expression) || isOneNumber(expression)) {
             return result;
         }
         splitExpression(expression);
@@ -36,10 +37,10 @@ public class CalculatorController {
 
     }
 
-    private boolean isEmptyString(String expression) {
+    private boolean isEmpty(String expression) {
 
         if (expression.trim().isEmpty()) {
-            result = 0;
+            result = EMPTY_STRING_VALUE;
             return true;
         }
         return false;
@@ -64,10 +65,10 @@ public class CalculatorController {
 
     private void isNumberFormat() throws Exception {
 
-        int index = firstSeparatorIndex - 1;
+        int index = firstSeparatorIndex - PREVIOUS_INDEX;
         while (index < numberAndSeparator.size()) {
             isNumeric(index);
-            index += 2;
+            index += NEXT_NUMBER_INDEX;
         }
     }
 
