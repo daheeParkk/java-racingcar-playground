@@ -1,4 +1,4 @@
-package racingCarGame;
+package racingCarGame.service;
 
 public class RacingService {
 

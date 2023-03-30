@@ -4,7 +4,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingCarGame.RacingService;
+import racingCarGame.domain.RacingCars;
+import racingCarGame.service.CarService;
+import racingCarGame.service.RacingService;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -29,8 +31,8 @@ public class RacingServiceTest {
     @DisplayName("전달받은 차의 수만큼 차를 만드는 테스트")
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3=3","car1,car2=2"}, delimiter = '=')
-    public void generateCarTest(String carsName, int numberOfCars) {
-        RacingCars racingCars = carService.generateCar(carsName);
-        assertThat(racingCars.getNumberOfCars).isEqaulTo(numberOfCars);
+    public void generateCarsTest(String carsName, int numberOfCars) {
+        RacingCars racingCars = carService.generateCars(carsName);
+        assertThat(racingCars.getNumberOfCars()).isEqualTo(numberOfCars);
     }
 }
