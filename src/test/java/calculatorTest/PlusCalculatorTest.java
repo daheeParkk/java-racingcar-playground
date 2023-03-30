@@ -1,7 +1,6 @@
 package calculatorTest;
 
 import calculator.controller.CalculatorController;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,6 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.*;
 
 public class PlusCalculatorTest {
+
+    private static final int EMPTY_STRING_VALUE = 0;
 
     private static CalculatorController calculator;
 
@@ -38,5 +39,13 @@ public class PlusCalculatorTest {
     @ValueSource(strings = {"1", "2", "3"})
     public void inputOneNumberTest(String addition) {
         assertThat(calculator.splitAndSum(addition)).isEqualTo(Integer.parseInt(addition));
+    }
+
+    @DisplayName("빈 문자열을 입력하는 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    public void inputEmptyStringTest(String addition) {
+        System.out.println("value : "+addition);
+        assertThat(calculator.splitAndSum(addition)).isEqualTo(EMPTY_STRING_VALUE);
     }
 }
