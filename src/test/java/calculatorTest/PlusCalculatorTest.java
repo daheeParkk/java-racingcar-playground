@@ -47,4 +47,11 @@ public class PlusCalculatorTest {
     public void inputEmptyStringTest(String addition) {
         assertThat(calculator.splitAndSum(addition)).isEqualTo(EMPTY_STRING_VALUE);
     }
+
+    @DisplayName("숫자 이외의 값 또는 음수를 입력한 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"a,b,c", "-1,2,3"})
+    public void notNumberFormat(String addition) {
+        assertThatThrownBy(() -> calculator.splitAndSum(addition)).isInstanceOf(RuntimeException.class);
+    }
 }
