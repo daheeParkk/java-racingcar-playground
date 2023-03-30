@@ -35,7 +35,7 @@ ex) git checkout -b apply-feedback
 # 자동차 경주 게임 구현 목록
 > - __domain__
 > - [ ] Car 
-> - [ ] Cars 
+> - [ ] RacingCars 
 > ---
 > - __controller__
 > - [ ] GameController
