@@ -16,15 +16,24 @@ public class CalculatorController {
     private static int result;
     private static int firstSeparatorIndex;
 
-    public int splitAndSum(String expression) {
+    public int splitAndSum(String expression) throws Exception {
 
         if (isEmptyString(expression) || isOneNumber(expression)) {
             return result;
         }
         splitExpression(expression);
+        checkMinusNumber();
         sumBySeparator();
 
         return result;
+    }
+
+    private void checkMinusNumber() {
+
+        if (numberAndSeparator.contains("-")) {
+            throw new RuntimeException();
+        }
+
     }
 
     private boolean isEmptyString(String expression) {
@@ -45,13 +54,32 @@ public class CalculatorController {
         return false;
     }
 
-    private void sumBySeparator() {
+    private void sumBySeparator() throws Exception {
+
         if (isCommaOrColonSeparator() || isCustomSeparator()) {
+            isNumberFormat();
             result = sumNumbers(firstSeparatorIndex);
         }
     }
 
+    private void isNumberFormat() throws Exception {
+
+        int index = firstSeparatorIndex - 1;
+        while (index < numberAndSeparator.size()) {
+            isNumeric(index);
+            index += 2;
+        }
+    }
+
+    private void isNumeric(int index) throws Exception {
+
+        if (!numberAndSeparator.get(index).chars().allMatch(Character::isDigit)) {
+            throw new RuntimeException();
+        }
+    }
+
     private boolean isCustomSeparator() {
+
         if (numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals("/")) {
             firstSeparatorIndex = FIRST_CUSTOM_SEPARATOR_INDEX;
             return true;
@@ -60,6 +88,7 @@ public class CalculatorController {
     }
 
     private boolean isCommaOrColonSeparator() {
+
         if (numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(",") || numberAndSeparator.get(FIRST_SEPARATOR_INDEX).equals(";")) {
             firstSeparatorIndex = FIRST_SEPARATOR_INDEX;
             return true;
