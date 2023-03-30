@@ -45,7 +45,6 @@ public class PlusCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     public void inputEmptyStringTest(String addition) {
-        System.out.println("value : "+addition);
         assertThat(calculator.splitAndSum(addition)).isEqualTo(EMPTY_STRING_VALUE);
     }
 }
