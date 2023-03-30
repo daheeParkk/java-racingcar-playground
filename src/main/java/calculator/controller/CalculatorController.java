@@ -18,13 +18,22 @@ public class CalculatorController {
 
     public int splitAndSum(String expression) {
 
-        if (isOneNumber(expression)) {
+        if (isEmptyString(expression) || isOneNumber(expression)) {
             return result;
         }
         splitExpression(expression);
         sumBySeparator();
 
         return result;
+    }
+
+    private boolean isEmptyString(String expression) {
+
+        if (expression.trim().isEmpty()) {
+            result = 0;
+            return true;
+        }
+        return false;
     }
 
     private boolean isOneNumber(String expression) {
