@@ -10,7 +10,7 @@ import racingCarGame.service.CarService;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarServiceTest {
-    private static final int MOVED_POSITION_ONCE = 1;
+    public static final int MOVED_POSITION_ONCE = 1;
 
     private static CarService carService;
 
