@@ -31,4 +31,9 @@ public class CarService {
     public void moveCar(String carName) {
         racingCars.moveCar(carName);
     }
+
+    public int findMaxPosition(RacingCars racingCars) {
+
+        return 0;
+    }
 }

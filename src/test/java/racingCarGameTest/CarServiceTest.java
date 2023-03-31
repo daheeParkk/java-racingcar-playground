@@ -42,7 +42,7 @@ public class CarServiceTest {
 
     @DisplayName("가장 큰 위치 값을 구하는 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"car1,car2,car3>car1>5", "car1,car2>car1>3"})
+    @CsvSource(value = {"car1,car2,car3>car1>5", "car1,car2>car1>3"}, delimiter = '>')
     public void findMaxPositionTest(String carsNames, String car1, int numberOfMoves) {
         RacingCars racingCars = carService.generateCars(carsNames);
 
