@@ -10,6 +10,7 @@ import racingCarGame.service.CarService;
 import racingCarGame.service.RacingService;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingCarGame.service.RacingService.randomNumber;
 import static racingCarGameTest.CarServiceTest.MOVED_POSITION_ONCE;
 
 public class RacingServiceTest {
@@ -35,12 +36,12 @@ public class RacingServiceTest {
     @ValueSource(strings = {"car1,car2,car3", "car1,car2,car3,car4,car5"})
     public void moveCarsOrNotTest(String carsNames) {
         RacingCars racingCars = carService.generateCars(carsNames);
-        randomNumber.setSeed(0);
+        racingService.generateRandomTime(10);
         racingService.moveCarsOrNot(racingCars);
 
         for (int i=0; i<racingCars.getNumberOfCars(); i++){
             if(randomNumber.nextInt(9) >= 4) {
-                assertThat(racingCars.getPosition(i)).isEqualTo(MOVED_POSITION_ONCE);
+                assertThat(racingCars.getPositionByIndex(i)).isEqualTo(MOVED_POSITION_ONCE);
             }
         }
     }

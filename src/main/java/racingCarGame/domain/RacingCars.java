@@ -23,7 +23,7 @@ public class RacingCars {
         }
     }
 
-    public int getPosition(String carName) {
+    public int getPositionByName(String carName) {
         int position = 0;
 
         for (Car car : cars) {
@@ -33,5 +33,13 @@ public class RacingCars {
             }
         }
         return position;
+    }
+
+    public String getNameByIndex(int index) {
+        return cars.get(index).getName();
+    }
+
+    public int getPositionByIndex(int index) {
+        return cars.get(index).getPosition();
     }
 }

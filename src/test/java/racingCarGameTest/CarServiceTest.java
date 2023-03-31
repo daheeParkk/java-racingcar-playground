@@ -33,6 +33,6 @@ public class CarServiceTest {
     public void movePositionTest(String carsNames, String carName) {
         RacingCars racingCars = carService.generateCars(carsNames);
         carService.moveCar(carName);
-        assertThat(racingCars.getPosition(carName)).isEqualTo(MOVED_POSITION_ONCE);
+        assertThat(racingCars.getPositionByName(carName)).isEqualTo(MOVED_POSITION_ONCE);
     }
 }
