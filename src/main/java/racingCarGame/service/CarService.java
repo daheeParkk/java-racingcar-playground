@@ -33,7 +33,11 @@ public class CarService {
     }
 
     public int findMaxPosition(RacingCars racingCars) {
-
-        return 0;
+        int maxPosition = 0;
+        for (int i=0; i<racingCars.getNumberOfCars(); i++) {
+            int position = racingCars.getPositionByIndex(i);
+            maxPosition = Math.max(maxPosition, position);
+        }
+        return maxPosition;
     }
 }
