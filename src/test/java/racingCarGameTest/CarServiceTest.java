@@ -53,7 +53,7 @@ public class CarServiceTest {
         assertThat(carService.findMaxPosition(racingCars)).isEqualTo(numberOfMoves);
     }
 
-    @DisplayName("위치 값 만큼 '-'를 만드는 테스트")
+    @DisplayName("위치 값만큼 '-'를 만드는 테스트")
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1>3>---", "a,b,c,d>a>5>-----"}, delimiter = '>')
     public void makeStick(String carsNames, String testCar, int numberOfMoves, String result) {

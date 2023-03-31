@@ -40,4 +40,14 @@ public class CarService {
         }
         return maxPosition;
     }
+
+    public String getStick(String carName) {
+        StringBuilder stick = new StringBuilder();
+        int position = racingCars.getPositionByName(carName);
+
+        for (int i=0; i<position; i++) {
+            stick.append("-");
+        }
+        return stick.toString();
+    }
 }
