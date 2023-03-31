@@ -52,7 +52,7 @@ ex) git checkout -b apply-feedback
 
 >### < 구현 목록 > 
 > - GameController
-> - [ ] 게임 시작 기능
+> - [x] 게임 시작 기능
 > - ---
 > - RacingService
 > - [x] 난수 시간을 설정하는 기능 
