@@ -57,6 +57,7 @@ ex) git checkout -b apply-feedback
 > - RacingService
 > - [ ] 난수를 생성하는 기능 
 > - [x] 전진 조건을 확인하는 기능
+> - [ ] 조건을 만족하면 위치를 증가하는 기능
 > - ---
 > - CarService
 > - [x] 전달받은 차의 수만큼 차를 생성하는 기능
