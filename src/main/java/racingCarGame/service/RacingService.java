@@ -1,7 +1,10 @@
 package racingCarGame.service;
 
+import racingCarGame.domain.Car;
 import racingCarGame.domain.RacingCars;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingService {
@@ -23,5 +26,16 @@ public class RacingService {
                 racingCars.moveCar(racingCars.getNameByIndex(i));
             }
         }
+    }
+
+    public List<String> findWinningCar(int maxPosition, RacingCars racingCars) {
+        List<String> winningCars = new ArrayList<>();
+
+        for (int i=0; i<racingCars.getNumberOfCars(); i++) {
+            if (racingCars.isSamePosition(i, maxPosition)) {
+                winningCars.add(racingCars.getNameByIndex(i));
+            }
+        }
+        return winningCars;
     }
 }

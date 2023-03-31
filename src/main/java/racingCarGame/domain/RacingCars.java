@@ -42,4 +42,8 @@ public class RacingCars {
     public int getPositionByIndex(int index) {
         return cars.get(index).getPosition();
     }
+
+    public boolean isSamePosition(int index, int maxPosition) {
+        return getPositionByIndex(index) == maxPosition;
+    }
 }

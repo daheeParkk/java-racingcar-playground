@@ -56,7 +56,7 @@ public class RacingServiceTest {
 
         racingCars.moveCar(testCar);
         int maxPosition = carService.findMaxPosition(racingCars);
-        List<String> winningCars = racingService.findWinningCar(maxPosition);
+        List<String> winningCars = racingService.findWinningCar(maxPosition, racingCars);
 
         assertThat(winningCars.get(0)).isEqualTo(testCar);
     }
