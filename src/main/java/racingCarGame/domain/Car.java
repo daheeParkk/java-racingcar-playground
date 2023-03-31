@@ -18,4 +18,12 @@ public class Car {
 
         return position;
     }
+
+    public void movePosition() {
+        position++;
+    }
+
+    public boolean isEqual(String name) {
+        return this.name.equals(name);
+    }
 }

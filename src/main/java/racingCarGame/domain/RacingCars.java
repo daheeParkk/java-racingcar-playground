@@ -14,4 +14,24 @@ public class RacingCars {
     public int getNumberOfCars() {
         return cars.size();
     }
+
+    public void moveCar(String carName) {
+        for (Car car : cars) {
+            if (car.isEqual(carName)) {
+                car.movePosition();
+            }
+        }
+    }
+
+    public int getPosition(String carName) {
+        int position = 0;
+
+        for (Car car : cars) {
+
+            if (car.isEqual(carName)) {
+                position = car.getPosition();
+            }
+        }
+        return position;
+    }
 }
