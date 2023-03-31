@@ -9,6 +9,8 @@ import racingCarGame.domain.RacingCars;
 import racingCarGame.service.CarService;
 import racingCarGame.service.RacingService;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 import static racingCarGame.service.RacingService.randomNumber;
 import static racingCarGameTest.CarServiceTest.MOVED_POSITION_ONCE;
@@ -45,4 +47,18 @@ public class RacingServiceTest {
             }
         }
     }
+
+    @DisplayName("위치 값이 가장 큰 차를 반환하는 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"car1,car2,car3>car1", "car1,car2,car3>car2"}, delimiter = '>')
+    public void findWinningCarTest(String carsNames, String testCar) {
+        RacingCars racingCars = carService.generateCars(carsNames);
+
+        racingCars.moveCar(testCar);
+        int maxPosition = carService.findMaxPosition(racingCars);
+        List<String> winningCars = racingService.findWinningCar(maxPosition);
+
+        assertThat(winningCars.get(0)).isEqualTo(testCar);
+    }
+
 }
