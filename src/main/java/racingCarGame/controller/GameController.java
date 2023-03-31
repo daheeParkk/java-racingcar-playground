@@ -33,6 +33,7 @@ public class GameController {
 
     private void moveCarsOrNot(RacingCars racingCars, int numberToTry) {
         racingService.generateRandomTime(System.currentTimeMillis());
+        resultView.outputResultText();
 
         for (int i=0; i<numberToTry; i++) {
             racingService.moveCarsOrNot(racingCars);
