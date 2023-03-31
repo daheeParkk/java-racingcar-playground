@@ -60,6 +60,7 @@ ex) git checkout -b apply-feedback
 > - ---
 > - CarService
 > - [x] 전달받은 차의 수만큼 차를 생성하는 기능
+> - [ ] 자동차 위치의 최댓값을 찾는 기능
 > - ---
 > - RacingCars
 > - [x] 위치를 변경하는 기능
