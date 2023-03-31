@@ -4,8 +4,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingCarGame.domain.Car;
 import racingCarGame.domain.RacingCars;
 import racingCarGame.service.CarService;
+import racingCarGame.service.RacingService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,10 +15,12 @@ public class CarServiceTest {
     public static final int MOVED_POSITION_ONCE = 1;
 
     private static CarService carService;
+    private static RacingService racingService;
 
     @BeforeAll
     public static void generateRacingService() {
         carService = new CarService();
+        racingService = new RacingService();
     }
 
     @DisplayName("전달받은 차의 수만큼 차를 만드는 테스트")
@@ -34,5 +38,18 @@ public class CarServiceTest {
         RacingCars racingCars = carService.generateCars(carsNames);
         carService.moveCar(carName);
         assertThat(racingCars.getPositionByName(carName)).isEqualTo(MOVED_POSITION_ONCE);
+    }
+
+    @DisplayName("가장 큰 위치 값을 구하는 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"car1,car2,car3>car1>5", "car1,car2>car1>3"})
+    public void findMaxPositionTest(String carsNames, String car1, int numberOfMoves) {
+        RacingCars racingCars = carService.generateCars(carsNames);
+
+        for (int i=0; i<numberOfMoves; i++) {
+            racingCars.moveCar(car1);
+        }
+
+        assertThat(carService.findMaxPosition(racingCars)).isEqualTo(numberOfMoves);
     }
 }
