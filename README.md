@@ -32,21 +32,48 @@ ex) git checkout -b apply-feedback
 > - 빈 문자열을 전달하는 경우 -> 0 반환
 > - 숫자 이외의 값 또는 음수를 전달하는 경우 -> 예외발생
 ---
-# 자동차 경주 게임 구현 목록
+# 자동차 경주 게임 
+>### < 패키지 >
 > - __domain__
-> - [ ] Car 
-> - [ ] RacingCars 
+>  - Car 
+>  - RacingCars 
 > ---
 > - __controller__
-> - [ ] GameController
+>  - GameController
 > ---
 > - __service__
-> - [ ] RacingService
-> - [ ] CarService
+>  - RacingService
+>  - CarService
 > - ---
 > - __view__
-> - [ ] InputView
-> - [ ] ResultView
+>  - InputView
+>  - ResultView
 > - ---
-> - ___예외처리___
+
+>### < 구현 목록 > 
+> - GameController
+> - [ ] 게임 시작 기능
+> - ---
+> - RacingService
+> - [ ] 난수를 생성하는 기능 
+> - [x] 전진 조건을 확인하는 기능
+> - ---
+> - CarService
+> - [x] 전달받은 차의 수만큼 차를 생성하는 기능
+> - ---
+> - RacingCars
+> - [x] 위치를 변경하는 기능
+> - [x] 위치를 반환하는 기능
+> - ---
+> - InputView
+> - [ ] 자동차들을 입력받는 기능
+> - [ ] racing 횟수를 입력받는 기능
+> - ---
+> - ResultView
+> - [ ] 실행 결과를 출력하는 기능
+> - [ ] 우승한 자동차를 출력하는 기능 
+> - ---
+> - __예외처리__
 > - [ ] 자동차 이름이 5자를 초과할 경우
+> - [ ] 자동차 이름이 중복일 경우
+> - [ ] 자동차가 하나일 경우
