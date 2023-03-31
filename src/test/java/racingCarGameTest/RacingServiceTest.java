@@ -33,7 +33,7 @@ public class RacingServiceTest {
     @DisplayName("난수가 4 이상이면 위치가 증가하는 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"car1,car2,car3", "car1,car2,car3,car4,car5"})
-    public void moveCarsOrNotTest() {
+    public void moveCarsOrNotTest(String carsNames) {
         RacingCars racingCars = carService.generateCars(carsNames);
         randomNumber.setSeed(0);
         racingService.moveCarsOrNot();
