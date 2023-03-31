@@ -18,7 +18,7 @@ public class CarServiceTest {
     private static RacingService racingService;
 
     @BeforeAll
-    public static void generateRacingService() {
+    public static void generateService() {
         carService = new CarService();
         racingService = new RacingService();
     }
