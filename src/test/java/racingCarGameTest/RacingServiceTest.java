@@ -36,7 +36,7 @@ public class RacingServiceTest {
     public void moveCarsOrNotTest(String carsNames) {
         RacingCars racingCars = carService.generateCars(carsNames);
         randomNumber.setSeed(0);
-        racingService.moveCarsOrNot();
+        racingService.moveCarsOrNot(racingCars);
 
         for (int i=0; i<racingCars.getNumberOfCars(); i++){
             if(randomNumber.nextInt(9) >= 4) {
