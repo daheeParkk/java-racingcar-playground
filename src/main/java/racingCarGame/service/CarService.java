@@ -10,18 +10,25 @@ import java.util.stream.Collectors;
 
 public class CarService {
 
-    public RacingCars generateCars(String carsName) {
+    private static RacingCars racingCars;
+
+    public RacingCars generateCars(String carsNames) {
 
         List<Car> cars = new ArrayList<>();
-        List<String> carNames = separateCar(carsName);
+        List<String> separatedCars = separateCar(carsNames);
 
-        for (String carName : carNames) {
+        for (String carName : separatedCars) {
             cars.add(new Car(carName));
         }
-        return new RacingCars(cars);
+        racingCars = new RacingCars(cars);
+        return racingCars;
     }
 
     private List<String> separateCar(String carsName) {
         return Arrays.stream(carsName.split(",")).collect(Collectors.toList());
+    }
+
+    public void moveCar(String carName) {
+
     }
 }
