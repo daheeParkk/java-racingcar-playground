@@ -5,12 +5,12 @@ import java.util.List;
 
 public class CalculatorController {
 
+    public static final int EMPTY_STRING_VALUE = 0;
     private static final int FIRST_SEPARATOR_INDEX = 1;
     private static final int FIRST_CUSTOM_SEPARATOR_INDEX = 6;
     private static final int NEXT_INDEX = 1;
     private static final int PREVIOUS_INDEX = 1;
     private static final int NEXT_NUMBER_INDEX = 2;
-    public static final int EMPTY_STRING_VALUE = 0;
 
     private static List<String> numberAndSeparator;
     private static int sumResult;
