@@ -14,11 +14,13 @@ public class ResultView {
     private final CarService carService = new CarService();
 
     public void outputResultText() {
+
         System.out.println(OUTPUT_RESULT_TEXT.getMessage());
     }
 
     public void outputExecutionResult(RacingCars racingCars) {
-        for (int i=0; i< racingCars.getNumberOfCars(); i++) {
+
+        for (int i = 0; i < racingCars.getNumberOfCars(); i++) {
             String carName = racingCars.getNameByIndex(i);
             System.out.println(carName + COLON + carService.getStick(carName));
         }
@@ -26,7 +28,8 @@ public class ResultView {
     }
 
     public void outputWinningCar(List<String> winningCars) {
+
         String winningCar = winningCars.toString();
-        System.out.println(winningCar.substring(1, winningCar.length()-1) + OUTPUT_WINNING_CAR.getMessage());
+        System.out.println(winningCar.substring(1, winningCar.length() - 1) + OUTPUT_WINNING_CAR.getMessage());
     }
 }

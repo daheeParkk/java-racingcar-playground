@@ -9,7 +9,6 @@ import racingCarGame.view.InputView;
 import racingCarGame.view.ResultView;
 
 import java.util.List;
-import java.util.zip.DataFormatException;
 
 public class GameController {
 
@@ -19,11 +18,17 @@ public class GameController {
     private final CarService carService = new CarService();
 
     private boolean correctInput = false;
+    private RacingCars racingCars;
+    private int numberToTry;
 
     public void playGame() {
+        inputCars();
+        numberToTry = inputView.inputNumberToTry();
+        moveCarsOrNot();
+        resultView.outputWinningCar(findWinningCar());
+    }
 
-        RacingCars racingCars = null;
-
+    private void inputCars() {
         while (!correctInput) {
             try {
                 String carsNames = inputView.inputCarNames();
@@ -33,23 +38,20 @@ public class GameController {
                 System.out.println(e.getMessage());
             }
         }
-        int numberToTry = inputView.inputNumberToTry();
-
-        moveCarsOrNot(racingCars, numberToTry);
-
-        resultView.outputWinningCar(findWinningCar(racingCars));
     }
 
-    private List<String> findWinningCar(RacingCars racingCars) {
+    private List<String> findWinningCar() {
+
         int maxPosition = carService.findMaxPosition(racingCars);
         return racingService.findWinningCar(maxPosition, racingCars);
     }
 
-    private void moveCarsOrNot(RacingCars racingCars, int numberToTry) {
+    private void moveCarsOrNot() {
+
         racingService.generateRandomTime(System.currentTimeMillis());
         resultView.outputResultText();
 
-        for (int i=0; i<numberToTry; i++) {
+        for (int i = 0; i < numberToTry; i++) {
             racingService.moveCarsOrNot(racingCars);
             resultView.outputExecutionResult(racingCars);
         }

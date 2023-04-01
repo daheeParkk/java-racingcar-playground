@@ -8,7 +8,7 @@ import racingCarGame.exception.CharacterLimitException;
 import racingCarGame.exception.DuplicateException;
 import racingCarGame.service.CarService;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ExceptionTest {
 
@@ -16,6 +16,7 @@ public class ExceptionTest {
 
     @BeforeAll
     public static void generateService() {
+
         carService = new CarService();
     }
 
@@ -31,6 +32,7 @@ public class ExceptionTest {
     @ParameterizedTest
     @ValueSource(strings = {"abc,abc,qwe", "dahee,hui,dahee", "bob,bob"})
     public void DuplicateExceptionTest(String carsNames) {
+
         assertThatThrownBy(() -> carService.generateCars(carsNames)).isInstanceOf(DuplicateException.class);
     }
 }

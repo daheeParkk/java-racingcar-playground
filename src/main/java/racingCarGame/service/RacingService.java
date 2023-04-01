@@ -1,6 +1,5 @@
 package racingCarGame.service;
 
-import racingCarGame.domain.Car;
 import racingCarGame.domain.RacingCars;
 
 import java.util.ArrayList;
@@ -16,15 +15,18 @@ public class RacingService {
     private final List<String> winningCars = new ArrayList<>();
 
     public void generateRandomTime(long seed) {
+
         randomNumber.setSeed(seed);
     }
 
     public boolean isForwardCondition(int number) {
+
         return number >= MINIMUM_FORWARD_CONDITION;
     }
 
     public void moveCarsOrNot(RacingCars racingCars) {
-        for (int i=0; i<racingCars.getNumberOfCars(); i++) {
+
+        for (int i = 0; i < racingCars.getNumberOfCars(); i++) {
             if (isForwardCondition(randomNumber.nextInt(MAXIMUM_OF_RANDOM_NUMBER))) {
                 racingCars.moveCar(racingCars.getNameByIndex(i));
             }
@@ -32,7 +34,8 @@ public class RacingService {
     }
 
     public List<String> findWinningCar(int maxPosition, RacingCars racingCars) {
-        for (int i=0; i<racingCars.getNumberOfCars(); i++) {
+
+        for (int i = 0; i < racingCars.getNumberOfCars(); i++) {
             if (racingCars.isSamePosition(i, maxPosition)) {
                 winningCars.add(racingCars.getNameByIndex(i));
             }

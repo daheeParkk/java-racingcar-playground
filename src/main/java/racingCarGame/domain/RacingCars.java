@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class RacingCars {
 
@@ -16,6 +15,7 @@ public class RacingCars {
     private int position;
 
     public RacingCars(List<Car> cars) throws DuplicateException {
+
         checkDuplicate(cars);
         this.cars = new ArrayList<>(cars);
     }
@@ -33,10 +33,12 @@ public class RacingCars {
     }
 
     public int getNumberOfCars() {
+
         return cars.size();
     }
 
     public void moveCar(String carName) {
+
         for (Car car : cars) {
             if (car.isEqual(carName)) {
                 car.movePosition();
@@ -45,6 +47,7 @@ public class RacingCars {
     }
 
     public int getPositionByName(String carName) {
+
         for (Car car : cars) {
 
             if (car.isEqual(carName)) {
@@ -55,14 +58,17 @@ public class RacingCars {
     }
 
     public String getNameByIndex(int index) {
+
         return cars.get(index).getName();
     }
 
     public int getPositionByIndex(int index) {
+
         return cars.get(index).getPosition();
     }
 
     public boolean isSamePosition(int index, int maxPosition) {
+
         return getPositionByIndex(index) == maxPosition;
     }
 }

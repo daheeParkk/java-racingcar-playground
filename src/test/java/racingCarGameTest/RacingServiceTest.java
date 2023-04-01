@@ -11,7 +11,7 @@ import racingCarGame.service.RacingService;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static racingCarGame.service.RacingService.randomNumber;
 import static racingCarGameTest.CarServiceTest.MOVED_POSITION_ONCE;
 
@@ -22,14 +22,16 @@ public class RacingServiceTest {
 
     @BeforeAll
     public static void generateService() {
+
         racingService = new RacingService();
         carService = new CarService();
     }
 
     @DisplayName("4 이상이면 true를 반환하는 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"2,false","3,false","4,true","5,true"}, delimiter = ',')
+    @CsvSource(value = {"2,false", "3,false", "4,true", "5,true"}, delimiter = ',')
     public void isForwardConditionTest(int number, boolean result) {
+
         assertThat(racingService.isForwardCondition(number)).isEqualTo(result);
     }
 
@@ -37,12 +39,13 @@ public class RacingServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"car1,car2,car3", "car1,car2,car3,car4,car5"})
     public void moveCarsOrNotTest(String carsNames) {
+
         RacingCars racingCars = carService.generateCars(carsNames);
         racingService.generateRandomTime(10);
         racingService.moveCarsOrNot(racingCars);
 
-        for (int i=0; i<racingCars.getNumberOfCars(); i++){
-            if(randomNumber.nextInt(9) >= 4) {
+        for (int i = 0; i < racingCars.getNumberOfCars(); i++) {
+            if (randomNumber.nextInt(9) >= 4) {
                 assertThat(racingCars.getPositionByIndex(i)).isEqualTo(MOVED_POSITION_ONCE);
             }
         }
@@ -52,6 +55,7 @@ public class RacingServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1", "car1,car2,car3>car2"}, delimiter = '>')
     public void findWinningCarTest(String carsNames, String testCar) {
+
         RacingCars racingCars = carService.generateCars(carsNames);
 
         racingCars.moveCar(testCar);

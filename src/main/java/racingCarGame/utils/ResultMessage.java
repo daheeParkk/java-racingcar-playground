@@ -8,10 +8,12 @@ public enum ResultMessage {
     private final String message;
 
     ResultMessage(String message) {
+
         this.message = message;
     }
 
     public String getMessage() {
+
         return message;
     }
 }
