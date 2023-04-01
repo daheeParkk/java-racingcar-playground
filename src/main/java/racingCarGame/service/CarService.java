@@ -12,7 +12,10 @@ import java.util.stream.Collectors;
 
 public class CarService {
 
+    private static final String STICK = "-";
+
     private static RacingCars racingCars;
+    private int maxPosition;
 
     public RacingCars generateCars(String carsNames) throws CharacterLimitException, DuplicateException {
 
@@ -35,7 +38,6 @@ public class CarService {
     }
 
     public int findMaxPosition(RacingCars racingCars) {
-        int maxPosition = 0;
         for (int i=0; i<racingCars.getNumberOfCars(); i++) {
             int position = racingCars.getPositionByIndex(i);
             maxPosition = Math.max(maxPosition, position);
@@ -48,7 +50,7 @@ public class CarService {
         int position = racingCars.getPositionByName(carName);
 
         for (int i=0; i<position; i++) {
-            stick.append("-");
+            stick.append(STICK);
         }
         return stick.toString();
     }

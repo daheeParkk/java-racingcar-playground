@@ -13,6 +13,8 @@ public class RacingCars {
     private final List<Car> cars;
     private final List<String> carsNames = new ArrayList<>();
 
+    private int position;
+
     public RacingCars(List<Car> cars) throws DuplicateException {
         checkDuplicate(cars);
         this.cars = new ArrayList<>(cars);
@@ -43,8 +45,6 @@ public class RacingCars {
     }
 
     public int getPositionByName(String carName) {
-        int position = 0;
-
         for (Car car : cars) {
 
             if (car.isEqual(carName)) {

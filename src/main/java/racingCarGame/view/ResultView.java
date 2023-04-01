@@ -10,6 +10,7 @@ import static racingCarGame.utils.ResultMessage.OUTPUT_WINNING_CAR;
 
 public class ResultView {
 
+    private static final String COLON = " : ";
     private final CarService carService = new CarService();
 
     public void outputResultText() {
@@ -19,9 +20,9 @@ public class ResultView {
     public void outputExecutionResult(RacingCars racingCars) {
         for (int i=0; i< racingCars.getNumberOfCars(); i++) {
             String carName = racingCars.getNameByIndex(i);
-            System.out.println(carName + " : " + carService.getStick(carName));
+            System.out.println(carName + COLON + carService.getStick(carName));
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public void outputWinningCar(List<String> winningCars) {
