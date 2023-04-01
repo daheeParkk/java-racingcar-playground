@@ -13,7 +13,7 @@ public class ResultView {
     private final CarService carService = new CarService();
 
     public void outputResultText() {
-        System.out.println(OUTPUT_RESULT_TEXT);
+        System.out.println(OUTPUT_RESULT_TEXT.getMessage());
     }
 
     public void outputExecutionResult(RacingCars racingCars) {
@@ -26,6 +26,6 @@ public class ResultView {
 
     public void outputWinningCar(List<String> winningCars) {
         String winningCar = winningCars.toString();
-        System.out.println(winningCar.substring(1, winningCar.length()-1) + OUTPUT_WINNING_CAR);
+        System.out.println(winningCar.substring(1, winningCar.length()-1) + OUTPUT_WINNING_CAR.getMessage());
     }
 }
