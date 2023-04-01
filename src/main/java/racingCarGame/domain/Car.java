@@ -1,12 +1,21 @@
 package racingCarGame.domain;
 
+import racingCarGame.exception.CharacterLimitException;
+
 public class Car {
 
     private final String name;
     private int position = 0;
 
-    public Car(String name) {
+    public Car(String name) throws CharacterLimitException{
+        checkNameLimit(name);
         this.name = name;
+    }
+
+    private void checkNameLimit(String name) throws CharacterLimitException{
+        if (name.length() >= 5) {
+            throw new CharacterLimitException();
+        }
     }
 
     public String getName() {

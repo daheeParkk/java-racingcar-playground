@@ -1,6 +1,7 @@
 package racingCarGame.controller;
 
 import racingCarGame.domain.RacingCars;
+import racingCarGame.exception.CharacterLimitException;
 import racingCarGame.service.CarService;
 import racingCarGame.service.RacingService;
 import racingCarGame.view.InputView;
@@ -15,11 +16,22 @@ public class GameController {
     private final RacingService racingService = new RacingService();
     private final CarService carService = new CarService();
 
+    private boolean correctInput = false;
+
     public void playGame() {
 
-        String carsNames = inputView.inputCarNames();
+        RacingCars racingCars = null;
+
+        while (!correctInput) {
+            try {
+                String carsNames = inputView.inputCarNames();
+                racingCars = carService.generateCars(carsNames);
+                correctInput = true;
+            } catch (CharacterLimitException e) {
+                System.out.println(e.getMessage());
+            }
+        }
         int numberToTry = inputView.inputNumberToTry();
-        RacingCars racingCars = carService.generateCars(carsNames);
 
         moveCarsOrNot(racingCars, numberToTry);
 
