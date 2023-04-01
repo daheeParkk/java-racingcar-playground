@@ -5,12 +5,15 @@ import racingCarGame.service.CarService;
 
 import java.util.List;
 
+import static racingCarGame.utils.ResultMessage.OUTPUT_RESULT_TEXT;
+import static racingCarGame.utils.ResultMessage.OUTPUT_WINNING_CAR;
+
 public class ResultView {
 
     private final CarService carService = new CarService();
 
     public void outputResultText() {
-        System.out.println("\n실행 결과");
+        System.out.println(OUTPUT_RESULT_TEXT);
     }
 
     public void outputExecutionResult(RacingCars racingCars) {
@@ -23,6 +26,6 @@ public class ResultView {
 
     public void outputWinningCar(List<String> winningCars) {
         String winningCar = winningCars.toString();
-        System.out.println(winningCar.substring(1, winningCar.length()-1) + "가 최종 우승했습니다.");
+        System.out.println(winningCar.substring(1, winningCar.length()-1) + OUTPUT_WINNING_CAR);
     }
 }
