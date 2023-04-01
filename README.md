@@ -31,6 +31,7 @@ ex) git checkout -b apply-feedback
 > - 숫자 하나를 전달하는 경우 -> 해당 숫자 반환
 > - 빈 문자열을 전달하는 경우 -> 0 반환
 > - 숫자 이외의 값 또는 음수를 전달하는 경우 -> 예외발생
+
 ---
 # 자동차 경주 게임 
 >### < 패키지 >
@@ -49,6 +50,18 @@ ex) git checkout -b apply-feedback
 >  - InputView
 >  - ResultView
 > - ---
+> - __exception__
+>   - CharacterLimitException
+>   - DuplicateException
+> - ---
+> - __utils__
+>   - ErrorMessage
+>   - InputMessage
+>   - ResultMessage
+> - ---
+> - __play__
+>   - PlayGame
+
 
 >### < 구현 목록 > 
 > - GameController
