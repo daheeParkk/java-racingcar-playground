@@ -3,6 +3,7 @@ package racingCarGame.service;
 import racingCarGame.domain.Car;
 import racingCarGame.domain.RacingCars;
 import racingCarGame.exception.CharacterLimitException;
+import racingCarGame.exception.DuplicateException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +14,7 @@ public class CarService {
 
     private static RacingCars racingCars;
 
-    public RacingCars generateCars(String carsNames) throws CharacterLimitException {
+    public RacingCars generateCars(String carsNames) throws CharacterLimitException, DuplicateException {
 
         List<Car> cars = new ArrayList<>();
         List<String> separatedCars = separateCar(carsNames);

@@ -2,12 +2,14 @@ package racingCarGame.controller;
 
 import racingCarGame.domain.RacingCars;
 import racingCarGame.exception.CharacterLimitException;
+import racingCarGame.exception.DuplicateException;
 import racingCarGame.service.CarService;
 import racingCarGame.service.RacingService;
 import racingCarGame.view.InputView;
 import racingCarGame.view.ResultView;
 
 import java.util.List;
+import java.util.zip.DataFormatException;
 
 public class GameController {
 
@@ -27,7 +29,7 @@ public class GameController {
                 String carsNames = inputView.inputCarNames();
                 racingCars = carService.generateCars(carsNames);
                 correctInput = true;
-            } catch (CharacterLimitException e) {
+            } catch (CharacterLimitException | DuplicateException e) {
                 System.out.println(e.getMessage());
             }
         }

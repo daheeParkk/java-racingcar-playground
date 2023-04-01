@@ -1,14 +1,33 @@
 package racingCarGame.domain;
 
+import racingCarGame.exception.DuplicateException;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
     private final List<Car> cars;
+    private final List<String> carsNames = new ArrayList<>();
 
-    public RacingCars(List<Car> cars) {
+    public RacingCars(List<Car> cars) throws DuplicateException {
+        checkDuplicate(cars);
         this.cars = new ArrayList<>(cars);
+    }
+
+    private void checkDuplicate(List<Car> cars) throws DuplicateException {
+
+        for (Car car : cars) {
+            carsNames.add(car.getName());
+        }
+        Set<String> deduplicatedCar = new HashSet<>(carsNames);
+
+        if (cars.size() != deduplicatedCar.size()) {
+            throw new DuplicateException();
+        }
     }
 
     public int getNumberOfCars() {
