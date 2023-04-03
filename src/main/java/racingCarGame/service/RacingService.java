@@ -12,8 +12,6 @@ public class RacingService {
     private static final int MAXIMUM_OF_RANDOM_NUMBER = 9;
     public static final Random randomNumber = new Random();
 
-    private final List<String> winningCars = new ArrayList<>();
-
     public void generateRandomTime(long seed) {
 
         randomNumber.setSeed(seed);
@@ -34,6 +32,8 @@ public class RacingService {
     }
 
     public List<String> findWinningCar(int maxPosition, RacingCars racingCars) {
+
+        List<String> winningCars = new ArrayList<>();
 
         for (int i = 0; i < racingCars.getNumberOfCars(); i++) {
             if (racingCars.isSamePosition(i, maxPosition)) {
