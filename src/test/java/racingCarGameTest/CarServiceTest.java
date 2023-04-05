@@ -17,7 +17,6 @@ public class CarServiceTest {
 
     @BeforeAll
     public static void generateService() {
-
         carService = new CarService();
     }
 
@@ -25,7 +24,6 @@ public class CarServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3=3", "car1,car2=2"}, delimiter = '=')
     public void generateCarsTest(String carsNames, int numberOfCars) {
-
         RacingCars racingCars = carService.generateCars(carsNames);
         assertThat(racingCars.getNumberOfCars()).isEqualTo(numberOfCars);
     }
@@ -34,7 +32,6 @@ public class CarServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1", "car1,car2,car3>car2"}, delimiter = '>')
     public void movePositionTest(String carsNames, String carName) {
-
         RacingCars racingCars = carService.generateCars(carsNames);
         carService.moveCar(carName);
         assertThat(racingCars.getPositionByName(carName)).isEqualTo(MOVED_POSITION_ONCE);
@@ -44,13 +41,11 @@ public class CarServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1>5", "car1,car2>car1>3"}, delimiter = '>')
     public void findMaxPositionTest(String carsNames, String car1, int numberOfMoves) {
-
         RacingCars racingCars = carService.generateCars(carsNames);
 
         for (int i = 0; i < numberOfMoves; i++) {
             racingCars.moveCar(car1);
         }
-
         assertThat(carService.findMaxPosition(racingCars)).isEqualTo(numberOfMoves);
     }
 
@@ -58,13 +53,11 @@ public class CarServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1>3>---", "a,b,c,d>a>5>-----"}, delimiter = '>')
     public void makeStick(String carsNames, String testCar, int numberOfMoves, String result) {
-
         RacingCars racingCars = carService.generateCars(carsNames);
 
         for (int i = 0; i < numberOfMoves; i++) {
             racingCars.moveCar(testCar);
         }
-
         assertThat(carService.getStick(testCar)).isEqualTo(result);
     }
 }

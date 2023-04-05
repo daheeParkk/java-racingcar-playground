@@ -10,20 +10,18 @@ public class RacingService {
 
     private static final int MINIMUM_FORWARD_CONDITION = 4;
     private static final int MAXIMUM_OF_RANDOM_NUMBER = 9;
+
     public static final Random randomNumber = new Random();
 
     public void generateRandomTime(long seed) {
-
         randomNumber.setSeed(seed);
     }
 
     public boolean isForwardCondition(int number) {
-
         return number >= MINIMUM_FORWARD_CONDITION;
     }
 
     public void moveCarsOrNot(RacingCars racingCars) {
-
         for (int i = 0; i < racingCars.getNumberOfCars(); i++) {
             if (isForwardCondition(randomNumber.nextInt(MAXIMUM_OF_RANDOM_NUMBER))) {
                 racingCars.moveCar(racingCars.getNameByIndex(i));
@@ -32,7 +30,6 @@ public class RacingService {
     }
 
     public List<String> findWinningCar(int maxPosition, RacingCars racingCars) {
-
         List<String> winningCars = new ArrayList<>();
 
         for (int i = 0; i < racingCars.getNumberOfCars(); i++) {

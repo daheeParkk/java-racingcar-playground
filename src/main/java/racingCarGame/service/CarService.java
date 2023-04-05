@@ -16,32 +16,29 @@ public class CarService {
     private static final String COMMA = ",";
 
     private static RacingCars racingCars;
+
     private int maxPosition;
 
     public RacingCars generateCars(String carsNames) throws CharacterLimitException, DuplicateException {
-
-        List<Car> cars = new ArrayList<>();
+        List<Car> cars;
         List<String> separatedCars = separateCar(carsNames);
 
-        for (String carName : separatedCars) {
-            cars.add(new Car(carName));
-        }
+        cars = separatedCars.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
         racingCars = new RacingCars(cars);
         return racingCars;
     }
 
     private List<String> separateCar(String carsName) {
-
         return Arrays.stream(carsName.split(COMMA)).collect(Collectors.toList());
     }
 
     public void moveCar(String carName) {
-
         racingCars.moveCar(carName);
     }
 
     public int findMaxPosition(RacingCars racingCars) {
-
         for (int i = 0; i < racingCars.getNumberOfCars(); i++) {
             int position = racingCars.getPositionByIndex(i);
             maxPosition = Math.max(maxPosition, position);
@@ -50,7 +47,6 @@ public class CarService {
     }
 
     public String getStick(String carName) {
-
         StringBuilder stick = new StringBuilder();
         int position = racingCars.getPositionByName(carName);
 

@@ -41,13 +41,11 @@ public class GameController {
     }
 
     private List<String> findWinningCar() {
-
         int maxPosition = carService.findMaxPosition(racingCars);
         return racingService.findWinningCar(maxPosition, racingCars);
     }
 
     private void moveCarsOrNot() {
-
         racingService.generateRandomTime(System.currentTimeMillis());
         resultView.outputResultText();
 

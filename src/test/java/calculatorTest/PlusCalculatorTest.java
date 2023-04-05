@@ -16,7 +16,6 @@ public class PlusCalculatorTest {
 
     @BeforeAll
     public static void generateCalculatorController() {
-
         calculator = new CalculatorController();
     }
 
@@ -24,7 +23,6 @@ public class PlusCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1,2=3", "1,2,3=6", "1,2,3,4=10"}, delimiter = '=')
     public void calculateCommaAndColonDelimiterTest(String addition, int result) throws Exception {
-
         assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
     }
 
@@ -32,7 +30,6 @@ public class PlusCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"//;\\n1;2;3=6", "//+\\n5+3=8"}, delimiter = '=')
     public void calculateCustomDelimiterTest(String addition, int result) throws Exception {
-
         assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
     }
 
@@ -40,7 +37,6 @@ public class PlusCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "2", "3"})
     public void inputOneNumberTest(String addition) throws Exception {
-
         assertThat(calculator.splitAndSum(addition)).isEqualTo(Integer.parseInt(addition));
     }
 
@@ -48,7 +44,6 @@ public class PlusCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     public void inputEmptyStringTest(String addition) throws Exception {
-
         assertThat(calculator.splitAndSum(addition)).isEqualTo(EMPTY_STRING_VALUE);
     }
 
@@ -56,7 +51,6 @@ public class PlusCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"a,b,c", "-1,2,3", "1,-5,a"})
     public void notNumberFormat(String addition) {
-
         assertThatThrownBy(() -> calculator.splitAndSum(addition)).isInstanceOf(RuntimeException.class);
     }
 
