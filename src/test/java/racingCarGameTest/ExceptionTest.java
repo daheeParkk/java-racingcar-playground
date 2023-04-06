@@ -30,6 +30,7 @@ public class ExceptionTest {
     @ParameterizedTest
     @ValueSource(strings = {"abc,abc,qwe", "dahee,hui,dahee", "bob,bob"})
     public void DuplicateExceptionTest(String carsNames) {
-        assertThatThrownBy(() -> carService.generateCars(carsNames)).isInstanceOf(DuplicateException.class);
+        assertThatThrownBy(() -> carService.generateCars(carsNames))
+                .isInstanceOf(DuplicateException.class);
     }
 }
