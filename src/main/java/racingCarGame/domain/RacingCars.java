@@ -43,7 +43,6 @@ public class RacingCars {
 
     public int getPositionByName(String carName) {
         for (Car car : cars) {
-
             if (car.isEqual(carName)) {
                 position = car.getPosition();
             }

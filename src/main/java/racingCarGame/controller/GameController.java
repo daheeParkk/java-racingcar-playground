@@ -31,13 +31,17 @@ public class GameController {
     private void inputCars() {
         while (!correctInput) {
             try {
-                String carsNames = inputView.inputCarNames();
-                racingCars = carService.generateCars(carsNames);
-                correctInput = true;
+                inputCarsNames();
             } catch (CharacterLimitException | DuplicateException e) {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    private void inputCarsNames() {
+        String carsNames = inputView.inputCarNames();
+        racingCars = carService.generateCars(carsNames);
+        correctInput = true;
     }
 
     private List<String> findWinningCar() {
