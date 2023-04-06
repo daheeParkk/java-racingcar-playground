@@ -23,7 +23,7 @@ public class CalculatorController {
         }
         splitExpression(expression);
         checkMinusNumber();
-        sumBySeparator();
+        addBySeparator();
 
         return result;
     }
@@ -50,10 +50,10 @@ public class CalculatorController {
         return false;
     }
 
-    private void sumBySeparator() throws Exception {
+    private void addBySeparator() throws Exception {
         if (isCommaOrColonSeparator() || isCustomSeparator()) {
             isNumberFormat();
-            result = sumNumbers(firstSeparatorIndex);
+            result = addNumbers(firstSeparatorIndex);
         }
     }
 
@@ -88,7 +88,7 @@ public class CalculatorController {
         return false;
     }
 
-    private int sumNumbers(int index) {
+    private int addNumbers(int index) {
         if (index + NEXT_INDEX < numberAndSeparator.size()) {
 
             String beforeNumber = numberAndSeparator.get(index - PREVIOUS_INDEX);
@@ -98,7 +98,7 @@ public class CalculatorController {
             numberAndSeparator.remove(index + NEXT_INDEX);
             numberAndSeparator.add(index + NEXT_INDEX, String.valueOf(sumResult));
             index += NEXT_NUMBER_INDEX;
-            sumNumbers(index);
+            addNumbers(index);
         }
         return sumResult;
     }
