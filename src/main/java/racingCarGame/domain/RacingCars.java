@@ -13,12 +13,12 @@ public class RacingCars {
     private final List<String> carsNames = new ArrayList<>();
     private int position;
 
-    public RacingCars(List<Car> cars) throws DuplicateException {
+    public RacingCars(List<Car> cars) {
         checkDuplicate(cars);
         this.cars = new ArrayList<>(cars);
     }
 
-    private void checkDuplicate(List<Car> cars) throws DuplicateException {
+    private void checkDuplicate(List<Car> cars) {
         for (Car car : cars) {
             carsNames.add(car.getName());
         }

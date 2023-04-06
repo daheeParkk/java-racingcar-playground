@@ -10,12 +10,12 @@ public class Car {
     private final String name;
     private int position = STARTING_POSITION;
 
-    public Car(String name) throws CharacterLimitException {
+    public Car(String name) {
         checkNameLimit(name);
         this.name = name;
     }
 
-    private void checkNameLimit(String name) throws CharacterLimitException {
+    private void checkNameLimit(String name) {
         if (name.length() > MAXIMUM_LENGTH_OF_NAME) {
             throw new CharacterLimitException();
         }
