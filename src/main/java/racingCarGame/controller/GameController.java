@@ -3,8 +3,7 @@ package racingCarGame.controller;
 import racingCarGame.domain.RacingCars;
 import racingCarGame.exception.CharacterLimitException;
 import racingCarGame.exception.DuplicateException;
-import racingCarGame.service.CarService;
-import racingCarGame.service.RacingService;
+import racingCarGame.utils.RandomNumber;
 import racingCarGame.view.InputView;
 import racingCarGame.view.ResultView;
 
@@ -14,8 +13,7 @@ public class GameController {
 
     private final InputView inputView = new InputView();
     private final ResultView resultView = new ResultView();
-    private final RacingService racingService = new RacingService();
-    private final CarService carService = new CarService();
+    private final RandomNumber randomNumber = new RandomNumber();
 
     private boolean correctInput = false;
     private RacingCars racingCars;
@@ -41,18 +39,18 @@ public class GameController {
 
     private void inputCarsNames() {
         String carsNames = inputView.inputCarNames();
-        racingCars = carService.generateCars(carsNames);
+        racingCars = RacingCars.from(carsNames);
         correctInput = true;
     }
 
     private List<String> findWinningCar() {
-        int maxPosition = carService.findMaxPosition(racingCars);
-        return racingService.findWinningCar(maxPosition, racingCars);
+        int maxPosition = racingCars.findMaxPosition();
+        return racingCars.findWinningCar(maxPosition);
     }
 
     private void moveCarsOrNot() {
         for (int i = 0; i < numberToTry; i++) {
-            racingService.moveCarsOrNot(racingCars);
+            racingCars.tryMoveCars(randomNumber.generateRandomNumber());
             resultView.outputExecutionResult(racingCars);
         }
     }

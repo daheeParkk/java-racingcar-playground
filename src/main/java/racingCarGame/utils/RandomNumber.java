@@ -1,6 +1,15 @@
 package racingCarGame.utils;
 
-public interface RandomNumber {
+import java.util.Random;
 
-    int generateRandomNumber();
+public class RandomNumber implements RandomGeneration{
+
+    private static final int CONDITION_NUMBER = 9;
+
+    private static final Random random = new Random();
+
+    @Override
+    public int generateRandomNumber() {
+        return random.nextInt(CONDITION_NUMBER);
+    }
 }

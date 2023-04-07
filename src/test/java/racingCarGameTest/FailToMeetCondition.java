@@ -1,10 +1,10 @@
 package racingCarGameTest;
 
-import racingCarGame.utils.RandomNumber;
+import racingCarGame.utils.RandomGeneration;
 
 import java.util.Random;
 
-public class FailToMeetCondition implements RandomNumber {
+public class FailToMeetCondition implements RandomGeneration {
 
     private static final int NOT_CONDITION_NUMBER = 3;
 
