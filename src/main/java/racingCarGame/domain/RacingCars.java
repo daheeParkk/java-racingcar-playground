@@ -98,4 +98,8 @@ public class RacingCars {
                 .collect(Collectors.joining());
         return stick;
     }
+
+    public List<String> findWinningCar(int maxPosition) {
+        return null;
+    }
 }

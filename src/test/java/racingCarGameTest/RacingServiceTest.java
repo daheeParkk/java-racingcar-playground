@@ -32,11 +32,11 @@ public class RacingServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1", "car1,car2,car3>car2"}, delimiter = '>')
     public void findWinningCarTest(String carsNames, String testCar) {
-        RacingCars racingCars = carService.generateCars(carsNames);
+        RacingCars racingCars = RacingCars.from(carsNames);
 
         racingCars.moveCar(testCar);
-        int maxPosition = carService.findMaxPosition(racingCars);
-        List<String> winningCars = racingService.findWinningCar(maxPosition, racingCars);
+        int maxPosition = racingCars.findMaxPosition();
+        List<String> winningCars = racingCars.findWinningCar(maxPosition);
 
         assertThat(winningCars.get(0)).isEqualTo(testCar);
     }
