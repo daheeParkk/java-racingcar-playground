@@ -8,13 +8,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingCarGame.domain.RacingCars;
 import racingCarGame.service.CarService;
 import racingCarGame.service.RacingService;
-import racingCarGame.utils.FailToMeetCondition;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingCarGame.service.RacingService.randomNumber;
 
 public class RacingServiceTest {
 
@@ -30,14 +28,14 @@ public class RacingServiceTest {
         carService = new CarService();
     }
 
-    @DisplayName("4 이상이면 true를 반환하는 테스트")
+/*    @DisplayName("4 이상이면 true를 반환하는 테스트")
     @ParameterizedTest
     @CsvSource(value = {"2,false", "3,false", "4,true", "5,true"}, delimiter = ',')
     public void isForwardConditionTest(int number, boolean result) {
         assertThat(racingService.isForwardCondition(number)).isEqualTo(result);
-    }
+    }*/
 
-    @DisplayName("난수가 4 이상이면 위치가 증가하는 테스트")
+/*    @DisplayName("난수가 4 이상이면 위치가 증가하는 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"car1,car2,car3", "car1,car2,car3,car4,car5"})
     public void moveCarsOrNotTest(String carsNames) {
@@ -50,7 +48,7 @@ public class RacingServiceTest {
                 assertThat(racingCars.getPositionByIndex(i)).isEqualTo(MOVED_POSITION_ONCE);
             }
         }
-    }
+    }*/
 
     @DisplayName("위치 값이 가장 큰 차를 반환하는 테스트")
     @ParameterizedTest

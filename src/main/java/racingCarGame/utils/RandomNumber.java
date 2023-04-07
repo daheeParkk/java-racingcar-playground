@@ -1,2 +1,6 @@
-package racingCarGame.utils;public class RandomNumber {
+package racingCarGame.utils;
+
+public interface RandomNumber {
+
+    int generateRandomNumber();
 }

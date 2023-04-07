@@ -54,4 +54,10 @@ public class RacingCars {
     public boolean isSamePosition(int index, int maxPosition) {
         return getPositionByIndex(index) == maxPosition;
     }
+
+    public void tryMoveCars(int randomNumber) {
+        cars.stream()
+                .filter(car -> randomNumber >= 4)
+                .forEach(Car::movePosition);
+    }
 }
