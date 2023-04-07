@@ -30,7 +30,6 @@ public class CalculatorController {
         splitExpression(expression);
         checkMinusNumber();
         addBySeparator();
-
         return result;
     }
 
