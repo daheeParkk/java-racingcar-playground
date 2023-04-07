@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarServiceTest {
 
-    public static final int MOVED_POSITION_ONCE = 1;
+    private static final int MOVED_POSITION_ONCE = 1;
 
     private static CarService carService;
 
@@ -24,7 +24,7 @@ public class CarServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3=3", "car1,car2=2"}, delimiter = '=')
     public void generateCarsTest(String carsNames, int numberOfCars) {
-        RacingCars racingCars = carService.generateCars(carsNames);
+        RacingCars racingCars = RacingCars.from(carsNames);
         assertThat(racingCars.getNumberOfCars()).isEqualTo(numberOfCars);
     }
 
