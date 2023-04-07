@@ -79,6 +79,12 @@ public class RacingCars {
     }
 
     public int findMaxPosition() {
-        return 0;
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            int position = car.getPosition();
+            maxPosition = Math.max(maxPosition, position);
+        }
+        return maxPosition;
     }
 }
