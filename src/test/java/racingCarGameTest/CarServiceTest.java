@@ -53,11 +53,11 @@ public class CarServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1>3>---", "a,b,c,d>a>5>-----"}, delimiter = '>')
     public void makeStick(String carsNames, String testCar, int numberOfMoves, String result) {
-        RacingCars racingCars = carService.generateCars(carsNames);
+        RacingCars racingCars = RacingCars.from(carsNames);
 
         for (int i = 0; i < numberOfMoves; i++) {
             racingCars.moveCar(testCar);
         }
-        assertThat(carService.getStick(testCar)).isEqualTo(result);
+        assertThat(racingCars.getStick(testCar)).isEqualTo(result);
     }
 }

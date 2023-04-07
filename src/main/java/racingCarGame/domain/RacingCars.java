@@ -87,4 +87,8 @@ public class RacingCars {
         }
         return maxPosition;
     }
+
+    public String getStick(String carName) {
+        return null;
+    }
 }
