@@ -41,12 +41,12 @@ public class CarServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1>5", "car1,car2>car1>3"}, delimiter = '>')
     public void findMaxPositionTest(String carsNames, String car1, int numberOfMoves) {
-        RacingCars racingCars = carService.generateCars(carsNames);
+        RacingCars racingCars = RacingCars.from(carsNames);
 
         for (int i = 0; i < numberOfMoves; i++) {
             racingCars.moveCar(car1);
         }
-        assertThat(carService.findMaxPosition(racingCars)).isEqualTo(numberOfMoves);
+        assertThat(racingCars.findMaxPosition()).isEqualTo(numberOfMoves);
     }
 
     @DisplayName("위치 값만큼 '-'를 만드는 테스트")

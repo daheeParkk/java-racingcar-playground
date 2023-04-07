@@ -77,4 +77,8 @@ public class RacingCars {
                 .filter(car -> randomNumber >= 4)
                 .forEach(Car::movePosition);
     }
+
+    public int findMaxPosition() {
+        return 0;
+    }
 }
