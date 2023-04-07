@@ -3,16 +3,33 @@ package racingCarGame.domain;
 import racingCarGame.exception.DuplicateException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
-    private final List<Car> cars;
+    private static final String COMMA = ",";
+
+    private static List<Car> cars;
+
     private int position;
 
     public RacingCars(List<Car> cars) {
         checkDuplicate(cars);
-        this.cars = new ArrayList<>(cars);
+        RacingCars.cars = new ArrayList<>(cars);
+    }
+
+    public static RacingCars from(String carsNames) {
+        List<String> separatedCars = separateCars(carsNames);
+        cars = separatedCars.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new RacingCars(cars);
+    }
+
+    private static List<String> separateCars(String carsNames) {
+        return Arrays.stream(carsNames.split(COMMA)).collect(Collectors.toList());
     }
 
     private void checkDuplicate(List<Car> cars) {
