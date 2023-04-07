@@ -8,14 +8,18 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingCarGame.domain.RacingCars;
 import racingCarGame.service.CarService;
 import racingCarGame.service.RacingService;
+import racingCarGame.utils.FailToMeetCondition;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingCarGame.service.RacingService.randomNumber;
-import static racingCarGameTest.CarServiceTest.MOVED_POSITION_ONCE;
 
 public class RacingServiceTest {
+
+    private static final int MOVED_POSITION_ZERO = 0;
+    private static final int MOVED_POSITION_ONCE = 0;
 
     private static RacingService racingService;
     private static CarService carService;
@@ -59,6 +63,20 @@ public class RacingServiceTest {
         List<String> winningCars = racingService.findWinningCar(maxPosition, racingCars);
 
         assertThat(winningCars.get(0)).isEqualTo(testCar);
+    }
+
+    @DisplayName("난수가 4보다 작을 경우 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"car1,car2,car3", "car1,car2,car3,car4,car5"})
+    public void failToMeetCondition(String carsNames) {
+        RacingCars racingCars = carService.generateCars(carsNames);
+        FailToMeetCondition failToMeetCondition = new FailToMeetCondition();
+        int randomNumber = failToMeetCondition.generateRandomNumber();
+
+        racingCars.tryMoveCars(randomNumber);
+
+        IntStream.range(0, racingCars.getNumberOfCars())
+                .forEach(i -> assertThat(racingCars.getPositionByIndex(i)).isEqualTo(MOVED_POSITION_ZERO));
     }
 
 }
