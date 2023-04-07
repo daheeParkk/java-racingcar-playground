@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingCarGame.domain.Car;
 import racingCarGame.domain.RacingCars;
 
 import java.util.List;
@@ -76,10 +77,11 @@ public class RacingCarsTest {
     public void failToMeetConditionTest(String carsNames) {
         RacingCars racingCars = RacingCars.from(carsNames);
         FailToMeetCondition failToMeetCondition = new FailToMeetCondition();
-        int randomNumber = failToMeetCondition.generateRandomNumber();
 
-        racingCars.tryMoveCars(randomNumber);
-
+        for (int i=0; i<racingCars.getNumberOfCars(); i++) {
+            int randomNumber = failToMeetCondition.generateRandomNumber();
+            racingCars.tryMoveCars(i, randomNumber);
+        }
         IntStream.range(0, racingCars.getNumberOfCars())
                 .forEach(i -> assertThat(racingCars.getPositionByIndex(i)).isEqualTo(MOVED_POSITION_ZERO));
     }
@@ -90,10 +92,11 @@ public class RacingCarsTest {
     public void satisfyConditionTest(String carsNames) {
         RacingCars racingCars = RacingCars.from(carsNames);
         SatisfyCondition satisfyCondition = new SatisfyCondition();
-        int randomNumber = satisfyCondition.generateRandomNumber();
 
-        racingCars.tryMoveCars(randomNumber);
-
+        for (int i=0; i<racingCars.getNumberOfCars(); i++) {
+            int randomNumber = satisfyCondition.generateRandomNumber();
+            racingCars.tryMoveCars(i, randomNumber);
+        }
         IntStream.range(0, racingCars.getNumberOfCars())
                 .forEach(i -> assertThat(racingCars.getPositionByIndex(i)).isEqualTo(MOVED_POSITION_ONCE));
     }
