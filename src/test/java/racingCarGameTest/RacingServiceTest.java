@@ -45,7 +45,7 @@ public class RacingServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"car1,car2,car3", "car1,car2,car3,car4,car5"})
     public void failToMeetConditionTest(String carsNames) {
-        RacingCars racingCars = carService.generateCars(carsNames);
+        RacingCars racingCars = RacingCars.from(carsNames);
         FailToMeetCondition failToMeetCondition = new FailToMeetCondition();
         int randomNumber = failToMeetCondition.generateRandomNumber();
 
@@ -59,7 +59,7 @@ public class RacingServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"car1,car2,car3", "car1,car2,car3,car4,car5"})
     public void satisfyConditionTest(String carsNames) {
-        RacingCars racingCars = carService.generateCars(carsNames);
+        RacingCars racingCars = RacingCars.from(carsNames);
         SatisfyCondition satisfyCondition = new SatisfyCondition();
         int randomNumber = satisfyCondition.generateRandomNumber();
 
