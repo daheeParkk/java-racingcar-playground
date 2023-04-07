@@ -50,7 +50,9 @@ public class GameController {
 
     private void moveCarsOrNot() {
         for (int i = 0; i < numberToTry; i++) {
-            racingCars.tryMoveCars(randomNumber.generateRandomNumber());
+            for (int j=0; j<racingCars.getNumberOfCars(); j++) {
+                racingCars.tryMoveCars(j, randomNumber.generateRandomNumber());
+            }
             resultView.outputExecutionResult(racingCars);
         }
     }

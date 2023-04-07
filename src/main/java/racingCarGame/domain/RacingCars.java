@@ -71,10 +71,10 @@ public class RacingCars {
         return cars.get(index).getPosition();
     }
 
-    public void tryMoveCars(int randomNumber) {
-        cars.stream()
-                .filter(car -> randomNumber >= MINIMUM_FORWARD_CONDITION)
-                .forEach(Car::movePosition);
+    public void tryMoveCars(int index, int randomNumber) {
+        if (randomNumber >= MINIMUM_FORWARD_CONDITION) {
+            moveCar(getNameByIndex(index));
+        }
     }
 
     public int findMaxPosition() {
