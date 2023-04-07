@@ -24,6 +24,7 @@ public class GameController {
     public void playGame() {
         inputCars();
         numberToTry = inputView.inputNumberToTry();
+        resultView.outputResultText();
         moveCarsOrNot();
         resultView.outputWinningCar(findWinningCar());
     }
@@ -50,9 +51,6 @@ public class GameController {
     }
 
     private void moveCarsOrNot() {
-        racingService.generateRandomTime(System.currentTimeMillis());
-        resultView.outputResultText();
-
         for (int i = 0; i < numberToTry; i++) {
             racingService.moveCarsOrNot(racingCars);
             resultView.outputExecutionResult(racingCars);

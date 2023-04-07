@@ -33,7 +33,7 @@ public class Car {
         position++;
     }
 
-    public boolean isEqual(String name) {
+    public boolean isEqualName(String name) {
         return this.name.equals(name);
     }
 }

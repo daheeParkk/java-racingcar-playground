@@ -3,14 +3,11 @@ package racingCarGame.domain;
 import racingCarGame.exception.DuplicateException;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class RacingCars {
 
     private final List<Car> cars;
-    private final List<String> carsNames = new ArrayList<>();
     private int position;
 
     public RacingCars(List<Car> cars) {
@@ -19,12 +16,12 @@ public class RacingCars {
     }
 
     private void checkDuplicate(List<Car> cars) {
-        for (Car car : cars) {
-            carsNames.add(car.getName());
-        }
-        Set<String> deduplicatedCar = new HashSet<>(carsNames);
+        long deduplicatedCount = cars.stream()
+                .map(Car::getName)
+                .distinct()
+                .count();
 
-        if (cars.size() != deduplicatedCar.size()) {
+        if (cars.size() != deduplicatedCount) {
             throw new DuplicateException();
         }
     }
@@ -34,19 +31,15 @@ public class RacingCars {
     }
 
     public void moveCar(String carName) {
-        for (Car car : cars) {
-            if (car.isEqual(carName)) {
-                car.movePosition();
-            }
-        }
+        cars.stream()
+                .filter(car -> car.isEqualName(carName))
+                .forEach(Car::movePosition);
     }
 
     public int getPositionByName(String carName) {
-        for (Car car : cars) {
-            if (car.isEqual(carName)) {
-                position = car.getPosition();
-            }
-        }
+      cars.stream()
+                .filter(car -> car.isEqualName(carName))
+                .forEach(car -> position = car.getPosition());
         return position;
     }
 
