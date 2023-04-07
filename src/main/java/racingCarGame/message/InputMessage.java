@@ -1,4 +1,4 @@
-package racingCarGame.utils;
+package racingCarGame.message;
 
 public enum InputMessage {
 

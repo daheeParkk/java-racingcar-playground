@@ -2,8 +2,8 @@ package racingCarGame.view;
 
 import java.util.Scanner;
 
-import static racingCarGame.utils.InputMessage.INPUT_CAR_NAME;
-import static racingCarGame.utils.InputMessage.INPUT_NUMBER_TO_TRY;
+import static racingCarGame.message.InputMessage.INPUT_CAR_NAME;
+import static racingCarGame.message.InputMessage.INPUT_NUMBER_TO_TRY;
 
 public class InputView {
 

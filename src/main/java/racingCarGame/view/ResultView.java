@@ -4,8 +4,8 @@ import racingCarGame.domain.RacingCars;
 
 import java.util.List;
 
-import static racingCarGame.utils.ResultMessage.OUTPUT_RESULT_TEXT;
-import static racingCarGame.utils.ResultMessage.OUTPUT_WINNING_CAR;
+import static racingCarGame.message.ResultMessage.OUTPUT_RESULT_TEXT;
+import static racingCarGame.message.ResultMessage.OUTPUT_WINNING_CAR;
 
 public class ResultView {
 

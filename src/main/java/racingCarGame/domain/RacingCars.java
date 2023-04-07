@@ -71,10 +71,6 @@ public class RacingCars {
         return cars.get(index).getPosition();
     }
 
-    public boolean isSamePosition(int index, int maxPosition) {
-        return getPositionByIndex(index) == maxPosition;
-    }
-
     public void tryMoveCars(int randomNumber) {
         cars.stream()
                 .filter(car -> randomNumber >= MINIMUM_FORWARD_CONDITION)
