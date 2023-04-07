@@ -36,4 +36,8 @@ public class Car {
     public boolean isEqualName(String name) {
         return this.name.equals(name);
     }
+
+    public boolean isEqualPosition(int position) {
+        return this.position == position;
+    }
 }

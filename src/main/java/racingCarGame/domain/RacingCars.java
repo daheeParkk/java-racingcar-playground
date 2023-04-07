@@ -100,6 +100,13 @@ public class RacingCars {
     }
 
     public List<String> findWinningCar(int maxPosition) {
-        return null;
+        List<String> winningCars = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.isEqualPosition(maxPosition)) {
+                winningCars.add(car.getName());
+            }
+        }
+        return winningCars;
     }
 }
