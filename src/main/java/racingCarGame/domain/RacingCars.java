@@ -12,6 +12,7 @@ public class RacingCars {
 
     private static final String COMMA = ",";
     private static final String STICK = "-";
+    private static final int MINIMUM_FORWARD_CONDITION = 4;
 
     private static List<Car> cars;
 
@@ -76,7 +77,7 @@ public class RacingCars {
 
     public void tryMoveCars(int randomNumber) {
         cars.stream()
-                .filter(car -> randomNumber >= 4)
+                .filter(car -> randomNumber >= MINIMUM_FORWARD_CONDITION)
                 .forEach(Car::movePosition);
     }
 
