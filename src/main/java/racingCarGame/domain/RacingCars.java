@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingCars {
 
     private static final String COMMA = ",";
+    private static final String STICK = "-";
 
     private static List<Car> cars;
 
@@ -89,6 +91,11 @@ public class RacingCars {
     }
 
     public String getStick(String carName) {
-        return null;
+        String stick;
+        int position = getPositionByName(carName);
+        stick = IntStream.range(0, position)
+                .mapToObj(i -> STICK)
+                .collect(Collectors.joining());
+        return stick;
     }
 }
