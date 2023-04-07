@@ -1,24 +1,15 @@
 package racingCarGameTest;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingCarGame.domain.RacingCars;
-import racingCarGame.service.CarService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarServiceTest {
+public class RacingCarsTest {
 
     private static final int MOVED_POSITION_ONCE = 1;
-
-    private static CarService carService;
-
-    @BeforeAll
-    public static void generateService() {
-        carService = new CarService();
-    }
 
     @DisplayName("전달받은 차의 수만큼 차를 만드는 테스트")
     @ParameterizedTest
