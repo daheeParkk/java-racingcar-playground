@@ -22,28 +22,28 @@ public class PlusCalculatorTest {
     @DisplayName("콤마 또는 콜론을 구분자로 가질 경우")
     @ParameterizedTest
     @CsvSource(value = {"1,2=3", "1,2,3=6", "1,2,3,4=10"}, delimiter = '=')
-    public void calculateCommaAndColonDelimiterTest(String addition, int result) throws Exception {
+    public void calculateCommaAndColonDelimiterTest(String addition, int result) {
         assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
     }
 
     @DisplayName("커스텀한 구분자를 가질 경우")
     @ParameterizedTest
     @CsvSource(value = {"//;\\n1;2;3=6", "//+\\n5+3=8"}, delimiter = '=')
-    public void calculateCustomDelimiterTest(String addition, int result) throws Exception {
+    public void calculateCustomDelimiterTest(String addition, int result) {
         assertThat(calculator.splitAndSum(addition)).isEqualTo(result);
     }
 
     @DisplayName("숫자 하나를 입력할 경우")
     @ParameterizedTest
     @ValueSource(strings = {"1", "2", "3"})
-    public void inputOneNumberTest(String addition) throws Exception {
+    public void inputOneNumberTest(String addition) {
         assertThat(calculator.splitAndSum(addition)).isEqualTo(Integer.parseInt(addition));
     }
 
     @DisplayName("빈 문자열을 입력하는 경우")
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
-    public void inputEmptyStringTest(String addition) throws Exception {
+    public void inputEmptyStringTest(String addition) {
         assertThat(calculator.splitAndSum(addition)).isEqualTo(EMPTY_STRING_VALUE);
     }
 
