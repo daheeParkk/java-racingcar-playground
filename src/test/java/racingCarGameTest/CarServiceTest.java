@@ -32,8 +32,8 @@ public class CarServiceTest {
     @ParameterizedTest
     @CsvSource(value = {"car1,car2,car3>car1", "car1,car2,car3>car2"}, delimiter = '>')
     public void movePositionTest(String carsNames, String carName) {
-        RacingCars racingCars = carService.generateCars(carsNames);
-        carService.moveCar(carName);
+        RacingCars racingCars = RacingCars.from(carsNames);
+        racingCars.moveCar(carName);
         assertThat(racingCars.getPositionByName(carName)).isEqualTo(MOVED_POSITION_ONCE);
     }
 
