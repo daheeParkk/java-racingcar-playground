@@ -23,7 +23,7 @@ public class GameController {
         inputCars();
         numberToTry = inputView.inputNumberToTry();
         resultView.outputResultText();
-        moveCarsOrNot();
+        tryMoveCars();
         resultView.outputWinningCar(findWinningCar());
     }
 
@@ -48,10 +48,10 @@ public class GameController {
         return racingCars.findWinningCar(maxPosition);
     }
 
-    private void moveCarsOrNot() {
+    private void tryMoveCars() {
         for (int i = 0; i < numberToTry; i++) {
             for (int j=0; j<racingCars.getNumberOfCars(); j++) {
-                racingCars.tryMoveCars(j, randomNumber.generateRandomNumber());
+                racingCars.tryMoveCars(j, randomNumber.generateRandomNumber());   
             }
             resultView.outputExecutionResult(racingCars);
         }
