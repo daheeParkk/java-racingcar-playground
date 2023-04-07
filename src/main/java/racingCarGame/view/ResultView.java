@@ -1,7 +1,6 @@
 package racingCarGame.view;
 
 import racingCarGame.domain.RacingCars;
-import racingCarGame.service.CarService;
 
 import java.util.List;
 
@@ -12,8 +11,6 @@ public class ResultView {
 
     private static final String COLON = " : ";
 
-    private final CarService carService = new CarService();
-
     public void outputResultText() {
         System.out.println(OUTPUT_RESULT_TEXT.getMessage());
     }
@@ -21,7 +18,7 @@ public class ResultView {
     public void outputExecutionResult(RacingCars racingCars) {
         for (int i = 0; i < racingCars.getNumberOfCars(); i++) {
             String carName = racingCars.getNameByIndex(i);
-            System.out.println(carName + COLON + carService.getStick(carName));
+            System.out.println(carName + COLON + racingCars.getStick(carName));
         }
         System.out.println();
     }
